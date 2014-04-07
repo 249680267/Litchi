@@ -1,0 +1,67 @@
+﻿@model LitchiServer.Models.OR_Delivered
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>OR_Delivered</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pk_ORDelivered_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pk_ORDelivered_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OR_Order.vrWinXinID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OR_Order.vrWinXinID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nvrContactName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrContactName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nvrContactPhone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrContactPhone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nvrContactAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrContactAddress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nvrContactDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrContactDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.bitDelete)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.bitDelete)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

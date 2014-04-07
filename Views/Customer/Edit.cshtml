@@ -1,0 +1,74 @@
+﻿@model LitchiServer.Models.CU_Customer
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>修改顾客</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>CU_Customer</legend>
+
+        <div class="editor-label" style="display:none">
+            @Html.LabelFor(model => model.pk_CUCustomer_ID)
+        </div>
+        <div class="editor-field" style="display:none">
+            @Html.EditorFor(model => model.pk_CUCustomer_ID)
+            @Html.ValidationMessageFor(model => model.pk_CUCustomer_ID)
+        </div>
+
+        <div class="editor-label">
+           微信昵称：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrWeiXinName)
+            @Html.ValidationMessageFor(model => model.nvrWeiXinName)
+        </div>
+
+        <div class="editor-label">
+           微信号：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrWeiXinID)
+            @Html.ValidationMessageFor(model => model.nvrWeiXinID)
+        </div>
+
+        <div class="editor-label">
+           姓名：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrCustomerName)
+            @Html.ValidationMessageFor(model => model.nvrCustomerName)
+        </div>
+
+        <div class="editor-label">
+           电话：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrCustomerPhone)
+            @Html.ValidationMessageFor(model => model.nvrCustomerPhone)
+        </div>
+
+        <div class="editor-label">
+            地址：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrCustomerAddress)
+            @Html.ValidationMessageFor(model => model.nvrCustomerAddress)
+        </div>
+        <p>
+            <input type="submit" value="保存" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("返回列表", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

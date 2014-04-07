@@ -1,0 +1,53 @@
+﻿@model IEnumerable<LitchiServer.Models.WA_WareLable>
+
+@{
+    ViewBag.Title = "123";
+}
+
+<h2>标签列表</h2>
+
+<p>
+    @Html.ActionLink("创建标签", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            
+        </th>
+        <th>
+          标签名称
+        </th>
+        <th>
+          商品分类
+        </th>
+        <th>
+           商品排序
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.HiddenFor(modelItem => item.pk_WAWareLable_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WA_WareClassify.nvrName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.intSort)
+        </td>
+       
+        <td>
+            @Html.ActionLink("修改", "Edit", new { id=item.pk_WAWareLable_ID }) |
+            @Html.ActionLink("查看", "Details", new { id=item.pk_WAWareLable_ID }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.pk_WAWareLable_ID })
+        </td>
+    </tr>
+}
+
+</table>

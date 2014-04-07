@@ -1,0 +1,48 @@
+﻿@model LitchiServer.Models.WA_WareLable
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>删除标签</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>WA_WareLable</legend>
+
+    <div class="display-label">
+         @Html.HiddenFor(model => model.pk_WAWareLable_ID)
+    </div>
+    <div class="display-field">
+        @Html.HiddenFor(model => model.pk_WAWareLable_ID)
+    </div>
+
+    <div class="display-label">
+         标签名称：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrName)
+    </div>
+
+    <div class="display-label">
+         商品分类：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WA_WareClassify.nvrName)
+    </div>
+
+    <div class="display-label">
+       标签排序
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.intSort)
+    </div>
+
+    
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="删除" /> |
+        @Html.ActionLink("返回列表", "Index")
+    </p>
+}

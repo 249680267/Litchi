@@ -1,0 +1,296 @@
+﻿@model LitchiServer.Models.ShopModels
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script type="text/javascript">
+    function AutoResizeImage(maxWidth, maxHeight, objImg) {
+        var img = new Image();
+        img.src = objImg.src;
+        var hRatio;
+        var wRatio;
+        var Ratio = 1;
+        var w = img.width;
+        var h = img.height;
+        wRatio = maxWidth / w;
+        hRatio = maxHeight / h;
+        if (maxWidth == 0 && maxHeight == 0) {
+            Ratio = 1;
+        } else if (maxWidth == 0) {//
+            if (hRatio < 1) Ratio = hRatio;
+        } else if (maxHeight == 0) {
+            if (wRatio < 1) Ratio = wRatio;
+        } else if (wRatio < 1 || hRatio < 1) {
+            Ratio = (wRatio <= hRatio ? wRatio : hRatio);
+        }
+        if (Ratio < 1) {
+            w = w * Ratio;
+            h = h * Ratio;
+        }
+        objImg.height = h;
+        objImg.width = w;
+    }
+</script>
+<h2>修改店铺信息</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>SE_Shop</legend>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.SeShop.pk_SEShop_ID)
+        </div>
+
+        @*<div class="editor-label">
+           @Html.Label("商家名称")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("fkSESellerID", String.Empty)
+            @Html.ValidationMessageFor(model => model.fkSESellerID)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.Label("店铺分类")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("fkShopClassifyID", String.Empty)
+            @Html.ValidationMessageFor(model => model.fkShopClassifyID)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("店铺名称")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeShop.nvrShopName)
+            @Html.ValidationMessageFor(model => model.SeShop.nvrShopName)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("店铺描述")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeShop.nvrDescription)
+            @Html.ValidationMessageFor(model => model.SeShop.nvrDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("地理位置_经度")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeShop.fltPosition_X)
+            @Html.ValidationMessageFor(model => model.SeShop.fltPosition_X)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("地理位置_纬度")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeShop.fltPosition_Y)
+            @Html.ValidationMessageFor(model => model.SeShop.fltPosition_Y)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("店铺地址")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeShop.vrAddress)
+            @Html.ValidationMessageFor(model => model.SeShop.vrAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("店铺所在地区")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeShop.nvrArea)
+            @Html.ValidationMessageFor(model => model.SeShop.nvrArea)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("联系电话")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeShop.vrPhone)
+            @Html.ValidationMessageFor(model => model.SeShop.vrPhone)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("覆盖范围")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeShop.fltScope)
+            @Html.ValidationMessageFor(model => model.SeShop.fltScope)
+        </div>
+        <div>营业开始时间1</div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.actionTime1 ,new{@class="input",@typeof="text"})
+            @Html.ValidationMessageFor(model => model.actionTime1)
+        </div>
+        <div>营业结束时间1</div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.endTime1 ,new{@class="input",@typeof="text"})
+            @Html.ValidationMessageFor(model => model.endTime1)
+        </div>
+        <div>营业开始时间2</div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.actionTime2 ,new{@class="input",@typeof="text"})
+            @Html.ValidationMessageFor(model => model.actionTime2)
+        </div>
+        <div>营业结束时间2</div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.endTime2 ,new{@class="input",@typeof="text"})
+            @Html.ValidationMessageFor(model => model.endTime2)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.Label( "店铺状态")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("fkSEShopStatuID", String.Empty)
+            @Html.ValidationMessageFor(model => model.fkSEShopStatuID)
+        </div>
+            @Html.HiddenFor(model => model.SeShop.bitDelete)
+        @*店铺外送信息*@
+        <div class="editor-label">
+            @Html.Label("是否启用起送价格")
+        </div>
+        <div>
+            @Html.EditorFor(model=>model.SeDelivery.bitISFloorPrice)
+            @Html.ValidationMessageFor(model=>model.SeDelivery.bitISFloorPrice)
+        </div><div class="editor-label">
+            @Html.Label("起送价格")
+        </div>
+        <div>
+            @Html.EditorFor(model=>model.SeDelivery.mnyFloorPrice)
+            @Html.ValidationMessageFor(model=>model.SeDelivery.mnyFloorPrice)
+        </div>
+        <div>
+            @Html.Label("是否启用外送费")
+        </div>
+        <div>
+            @Html.EditorFor(model=>model.SeDelivery.bitDelivery)
+            @Html.ValidationMessageFor(model => model.SeDelivery.bitDelivery)
+        </div>
+        <div>
+            @Html.Label("外送费")
+        </div>
+        <div>
+            @Html.EditorFor(model=>model.SeDelivery.mnyDelivery)
+            @Html.ValidationMessageFor(model => model.SeDelivery.mnyDelivery)
+        </div>
+        @Html.HiddenFor(model=>model.SeDelivery.pk_SEDelivery_ID)
+        @*店铺显示信息*@
+        <div class="editor-lable">
+            @Html.Label("店铺公告")
+        </div>
+        <div>
+            @Html.EditorFor(model=>model.SeShopShow.nvrShopNotice)
+            @Html.ValidationMessageFor(model => model.SeShopShow.nvrShopNotice)
+        </div>
+        @Html.HiddenFor(model=>model.SeShopShow.pk_SEShopShow_ID)
+         @*上传图片 *@
+        <input id="file_upload" name="file_upload" type="file" />
+        <div id="div_img_list" class="xiangce_biaoqian_right_shangchuanzhaopian">
+            @{var i = 0;
+              var select = true;
+              }
+                @foreach (var pic in ViewData["shopPicList"] as List<LitchiServer.Models.SE_ShopPic>)
+                {
+                    if (pic != null)
+                    { 
+                        @Html.CheckBox("shopPic"+ ++i,select,new {value=pic.pkSEShopPic_ID})
+                        <img src="@Url.Content(pic.vrPicUrl)" onload="AutoResizeImage(0,250,this)" alt="..." />
+                    }
+                }
+        </div>
+
+        <p>
+            <input type="submit" value="保存" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("返回店铺列表", "Index")
+</div>
+<link href="../../css/css.css" rel="stylesheet" type="text/css" />
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="@Url.Content("~/Scripts/uploadify/jquery.uploadify.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#file_upload").uploadify({
+                queueID: "1",
+                swf: '/Scripts/uploadify/uploadify.swf',
+                uploader: '/Home/Upload', // 上传文件，后台上传方法
+                buttonImage: "/images/xiangcebiaoqian_anniu.gif", // 按钮图片地址
+                fileSizeLimit: '100000000KB', // 最大允许文件上传大小，这里是 10M
+                fileTypeDesc: 'Image Files',
+                fileTypeExts: '*.gif; *.jpg; *.png; *.jpeg',
+                auto: true, // 自动上传
+                uploadLimit: 20, // 允许文件上传个数
+                queueSizeLimit: 5, // 允许同时文件上传个数
+                width: 159, // 上传按钮的宽度
+                height: 47, // 上传按钮的高度
+                onSelect: function (file) { // 选择文件的事件
+                    var name = file.name;
+                    if (name.length >= 10) {
+                        var index = name.lastIndexOf(".");
+                        name = name.substr(0, 8) + "...." + name.substr(index + 1);
+                    }
+                    var html = '<div id="div_id_' + file.id + '" class="uploading"><div id="div_title_' + file.id + '" class="uploading_file_name">' + name + '<div><div id="div_uploading_' + file.id + '" class="uploading_schedule">0%</div></div>';
+                    $("#div_img_list").append(html);
+
+                },
+                onUploadProgress: function (file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) { // 上传文件的进度事件
+                    var v = Math.round(bytesUploaded / bytesTotal * 100);
+                    $('#div_uploading_' + file.id).html(v + "%");
+                },
+                onUploadSuccess: function (file, data, response) { // 上传文件成功之后的事件
+                    $("#div_title_" + file.id).remove();
+                    $("#div_uploading_" + file.id).remove();
+                    var html = '<img alt="" src="' + data + '" />';
+                    html += "<a href=\"javascript:\" onclick=\"DeleteFile('" + file.id + "');\">X</a>";
+                    $("#div_id_" + file.id).html(html);
+                }
+            });
+        });
+        // 移除图片
+        function DeleteFile(id) {
+            $("#div_id_" + id).remove();
+        }
+
+        //获取图片选中状态
+        function boxGet() {
+            var box = "";
+            for (var i = 1; i > 0; i++) {
+                var al = document.getElementById("shopPic" + i);
+                if (al == null) {
+                    i = -1;
+                }
+                else {
+                    if (al.checked) {
+                        box += al.value + ",";
+                    }
+                }
+            }
+            return box;
+        }
+
+        $(function () {
+            $("#subSeller").click(function () {
+                var param = boxGet();
+                $.ajax({
+                    type: "get",
+                    data: "param=" + param,
+                    url: "/Seller/EditPic",
+                    success: function (obj) {
+                        alert("修改成功");
+                    }
+                })
+            })
+        })
+    </script>
+}

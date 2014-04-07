@@ -1,0 +1,62 @@
+﻿@model LitchiServer.Models.WA_WareClassify
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>修改商品分类</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>WA_WareClassify</legend>
+
+        <div class="editor-label" style="display:none">
+            @Html.LabelFor(model => model.pk_WAWareClassify_ID)
+        </div>
+        <div class="editor-field" style="display:none">
+            @Html.EditorFor(model => model.pk_WAWareClassify_ID)
+            @Html.ValidationMessageFor(model => model.pk_WAWareClassify_ID)
+        </div>
+
+      
+
+        <div class="editor-label">
+           分类名称：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrName)
+            @Html.ValidationMessageFor(model => model.nvrName)
+        </div>
+
+        <div class="editor-label">
+           分类描述
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrDescription)
+            @Html.ValidationMessageFor(model => model.nvrDescription)
+        </div>
+
+        <div class="editor-label">
+          分类描述：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.intSort)
+            @Html.ValidationMessageFor(model => model.intSort)
+        </div>
+
+       
+        <p>
+            <input type="submit" value="确认" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("返回列表", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

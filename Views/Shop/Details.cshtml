@@ -1,0 +1,162 @@
+﻿@model LitchiServer.Models.ShopModels
+
+@{
+    ViewBag.Title = "店铺详情";
+}
+<script type="text/javascript">
+function AutoResizeImage(maxWidth,maxHeight,objImg){
+var img = new Image();
+img.src = objImg.src;
+var hRatio;
+var wRatio;
+var Ratio = 1;
+var w = img.width;
+var h = img.height;
+wRatio = maxWidth / w;
+hRatio = maxHeight / h;
+if (maxWidth ==0 && maxHeight==0){
+Ratio = 1;
+}else if (maxWidth==0){//
+if (hRatio<1) Ratio = hRatio;
+}else if (maxHeight==0){
+if (wRatio<1) Ratio = wRatio;
+}else if (wRatio<1 || hRatio<1){
+Ratio = (wRatio<=hRatio?wRatio:hRatio);
+}
+if (Ratio<1){
+w = w * Ratio;
+h = h * Ratio;
+}
+objImg.height = h;
+objImg.width = w;
+}
+</script>
+<h2>店铺详情</h2>
+
+<fieldset>
+    <legend>SE_Shop</legend>
+
+    <div class="display-label">
+         商家名称
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeShop.SE_Seller.nvrSellerName)
+    </div>
+
+    <div class="display-label">
+         店铺分类
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeShop.SEShopClassify.nvrClassifyName)
+    </div>
+
+    <div class="display-label">
+         店铺名称
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeShop.nvrShopName)
+    </div>
+
+    <div class="display-label">
+         描述
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeShop.nvrDescription)
+    </div>
+
+    <div class="display-label">
+         店铺地址
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeShop.vrAddress)
+    </div>
+
+    <div class="display-label">
+         联系电话
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeShop.vrPhone)
+    </div>
+
+    <div class="display-label">
+         服务范围
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeShop.fltScope)
+    </div>
+    <div class="display-label">
+         营业开始时间1
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.actionTime1)
+    </div>
+    <div class="display-label">
+         营业结束时间1
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.endTime1)
+    </div>
+    <div class="display-label">
+         营业开始时间2
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.actionTime2)
+    </div>
+    <div class="display-label">
+         营业结束时间2
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.endTime2)
+    </div>
+    <div class="display-label">
+         店铺状态
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeShop.SEShopStatu.nvrStatusName)
+    </div>
+    <div class="display-label">
+         是否启用外送价格
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model=>model.SeDelivery.bitDelivery)
+    </div>
+    <div class="display-label">
+         外送价格
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model=>model.SeDelivery.mnyDelivery)
+    </div>
+    <div class="display-label">
+         是否启用起送价格
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model=>model.SeDelivery.bitISFloorPrice)
+    </div>
+    <div class="display-label">
+         起送价格
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model=>model.SeDelivery.mnyFloorPrice)
+    </div>
+    <div class="display-lable">
+        店铺公告
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model=>model.SeShopShow.nvrShopNotice)
+    </div>
+     @*图片展示*@
+    <div id="div_img_list" class="xiangce_biaoqian_right_shangchuanzhaopian">
+        @foreach (var pic in ViewData["shopPicList"] as List<LitchiServer.Models.SE_ShopPic>)
+        {
+            <img src="@Url.Content(pic.vrPicUrl)" onload="AutoResizeImage(0,250,this)" alt="@Url.Content(pic.vrPicUrl)"/>
+        }
+    </div>
+
+
+</fieldset>
+<p>
+    @Html.ActionLink("修改店铺信息", "Edit", new { id=Model.SeShop.pk_SEShop_ID }) |
+    @Html.ActionLink("返回店铺列表", "Index")
+</p>
+
+<link href="../../css/css.css" rel="stylesheet" type="text/css" />

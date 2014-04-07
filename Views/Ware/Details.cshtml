@@ -1,0 +1,155 @@
+﻿@model LitchiServer.Models.vWareMessage
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<script type="text/javascript">
+    function AutoResizeImage(maxWidth, maxHeight, objImg) {
+        var img = new Image();
+        img.src = objImg.src;
+        var hRatio;
+        var wRatio;
+        var Ratio = 1;
+        var w = img.width;
+        var h = img.height;
+        wRatio = maxWidth / w;
+        hRatio = maxHeight / h;
+        if (maxWidth == 0 && maxHeight == 0) {
+            Ratio = 1;
+        } else if (maxWidth == 0) {//
+            if (hRatio < 1) Ratio = hRatio;
+        } else if (maxHeight == 0) {
+            if (wRatio < 1) Ratio = wRatio;
+        } else if (wRatio < 1 || hRatio < 1) {
+            Ratio = (wRatio <= hRatio ? wRatio : hRatio);
+        }
+        if (Ratio < 1) {
+            w = w * Ratio;
+            h = h * Ratio;
+        }
+        objImg.height = h;
+        objImg.width = w;
+    }
+
+</script>
+<fieldset>
+    <legend>WA_Ware</legend>
+
+    <div class="display-label">
+        
+    </div>
+    <div class="display-field">
+        @Html.HiddenFor(model => model.pk_WAWare_ID)
+    </div>
+
+    <div class="display-label">
+         店铺名称：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrShopName)
+    </div>
+
+    <div class="display-label">
+        商品类型：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrName)
+    </div>
+
+    <div class="display-label">
+        商品名称：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrWareName)
+    </div>
+
+    <div class="display-label">
+       商品价格：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mnyPrice)
+    </div>
+
+    <div class="display-label">
+         商品数量：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.intNum)
+    </div>
+
+    <div class="display-label">
+         商品详情：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrDetail)
+    </div>
+
+    <div class="display-label">
+         商品状态：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.bitStatus)
+    </div>
+
+    <div class="display-label">
+        商品销量：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.intSales)
+    </div>
+
+    <div class="display-label">
+        商品排序：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.intSort)
+    </div>
+     <div class="display-label">
+        商品标签：
+    </div>
+    <div id="la" class="editor-field">
+           <table>
+                @{var n = 0;}
+                @foreach(var item in ViewBag.list){
+                <tr>
+                     @{var select = false; }
+              @foreach (var mo in ViewBag.listlable)
+             {
+               
+                if (item.pk_WAWareLable_ID == mo.pk_WAWareLable_ID)
+                {
+                    select = true;   
+                }
+             }
+                 <td>@Html.CheckBox("templateId"+ ++n,select,new { value = item.pk_WAWareLable_ID })</td>
+                 <td><input type="text"  value="@item.nvrName" /></td>
+                </tr>
+                }
+            </table>
+
+        </div> 
+
+
+     <div id="div_img_list" class="xiangce_biaoqian_right_shangchuanzhaopian">
+        @foreach (var pic in ViewData["warepicList"] as List<LitchiServer.Models.WA_WarePic>)
+        {
+            
+            <img src="@Url.Content(pic.vrPic)" onload="AutoResizeImage(0,250,this)" alt="..." />
+        }
+    </div>
+
+  
+</fieldset>
+<p>
+    @Html.ActionLink("修改", "Edit", new { id=Model.pk_WAWare_ID }) |
+    @Html.ActionLink("返回列表", "Index")
+</p>
+
+<link href="../../css/css.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+
+</script>

@@ -1,0 +1,57 @@
+﻿@model LitchiServer.Models.OR_DetailOrder
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>OR_DetailOrder</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pkORDetailOrderID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pkORDetailOrderID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OR_Order.vrWinXinID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OR_Order.vrWinXinID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WA_Ware.nvrWareName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WA_Ware.nvrWareName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fltWareNum)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fltWareNum)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mnyWarePrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mnyWarePrice)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.bitDelete)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.bitDelete)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

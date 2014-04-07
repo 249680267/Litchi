@@ -1,0 +1,74 @@
+﻿@model LitchiServer.Models.vOrOrder
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>vOrOrder</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pkOROrder_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pkOROrder_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fkSEShopID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fkSEShopID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nvrShopName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrShopName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dtmOrderTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dtmOrderTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fkOROrderStatuID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fkOROrderStatuID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nvrStatusName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrStatusName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mnyOrderTotal)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mnyOrderTotal)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.vrWinXinID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vrWinXinID)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

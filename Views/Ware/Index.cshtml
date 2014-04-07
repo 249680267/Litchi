@@ -1,0 +1,90 @@
+﻿@model IEnumerable<LitchiServer.Models.vWareMessage>
+
+@{
+    ViewBag.Title = "商品管理";
+}
+
+<h2>商品列表</h2>
+
+<p>
+    @Html.ActionLink("添加商品", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+         
+        </th>
+        <th>
+           店铺名称
+        </th>
+        <th>
+           商品类型
+        </th>
+        <th>
+           商品名称
+        </th>
+        <th>
+           商品价格
+        </th>
+        <th>
+           商品数量
+        </th>
+        <th>
+           商品详情
+        </th>
+        <th>
+           商品状态
+        </th>
+        <th>
+           商品销量
+        </th>
+        <th>
+           商品排序
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.HiddenFor(modelItem => item.pk_WAWare_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrShopName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrWareName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mnyPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.intNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrDetail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bitStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.intSales)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.intSort)
+        </td>
+        
+        <td>
+            @Html.ActionLink("修改", "Edit", new {  id=item.pk_WAWare_ID }) |
+            @Html.ActionLink("查看", "Details", new { id=item.pk_WAWare_ID }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.pk_WAWare_ID }) 
+            
+        </td>
+    </tr>
+}
+
+</table>

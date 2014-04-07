@@ -1,0 +1,122 @@
+﻿@model IEnumerable<LitchiServer.Models.WA_WareLable>
+
+@{
+    ViewBag.Title = "Warelabel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>选择标签</h2>
+
+<table>
+    <tr>
+         <th >
+           
+        </th>
+        <th>
+            选择
+
+        </th>
+       
+        <th>
+           标签名称
+        </th>
+       
+        <th>
+           标签排序
+        </th>
+       <th>
+
+       </th>
+        
+    </tr>
+    @{var i = 0;}
+@foreach (var item in Model) {
+    <tr>
+         <td>
+            @Html.HiddenFor(modelItem => item.pk_WAWareLable_ID)
+        </td>
+        <td>  
+            @{var select = false; }
+            @foreach (var mo in ViewBag.listlable)
+            {
+               
+                if (item.pk_WAWareLable_ID == mo.pk_WAWareLable_ID)
+                {
+                    select = true;   
+                }
+            }
+             
+           @Html.CheckBox("templateId"+ ++i,select,new { value = item.pk_WAWareLable_ID })  
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrName)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.intSort)
+        </td>
+        <td>
+
+            @Html.Hidden("hidden1",item.pk_WAWareLable_ID)
+        </td>
+       
+    </tr>
+}
+    
+</table>
+
+<table id="box">
+   
+    <tr >
+        <td id="" ><a id="boxty">确认</a> </td>
+        <td>@Html.ActionLink("返回", "Index")</td>
+       
+    </tr>
+
+
+</table>  
+@section Scripts {
+     @Scripts.Render("~/bundles/jqueryval")
+<script src="@Url.Content("~/Scripts/uploadify/jquery.uploadify.js")" type="text/javascript"></script>
+<script type="text/javascript" >
+    function boxget() {
+        var b="";
+        for (var i = 1; i > 0; i++) {
+            var al = document.getElementById("templateId" + i);
+            
+            if (al == null) {
+                i = -1;
+            }
+            else {
+                if (al.checked) {
+                    b += al.value + ",";
+                    
+                }
+            }
+
+        }
+        return b;
+    }
+
+ 
+
+
+    $(function () {
+        
+        $("#boxty").click(function () {
+            var param = boxget();
+            $.ajax({
+                type: "get",
+                url: "/Ware/EditWarelabel",
+                data:"param="+ param,
+                success: function (obj) {
+                    alert("修改成功");
+                  
+            }
+
+            })
+        })
+    })
+</script>
+    }

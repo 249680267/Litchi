@@ -1,0 +1,47 @@
+﻿@model LitchiServer.Models.OR_Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>OR_Order</legend>
+
+    
+    <div class="display-label">
+        微信号
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vrWinXinID)
+    </div>
+
+    <div class="display-label">
+        订单总价
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mnyOrderTotal)
+    </div>
+
+    <div class="display-label">
+        下单时间
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dtmOrderTime)
+    </div>
+
+    <div class="display-label">
+        订单状态
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OR_OrderStatu.nvrStatusName)
+    </div>
+
+  
+   
+</fieldset>
+<p>
+    
+    @Html.ActionLink("返回列表", "Index")
+</p>

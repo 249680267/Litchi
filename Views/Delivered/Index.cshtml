@@ -1,0 +1,69 @@
+﻿@model IEnumerable<LitchiServer.Models.OR_Delivered>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pk_ORDelivered_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OR_Order.vrWinXinID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nvrContactName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nvrContactPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nvrContactAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nvrContactDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bitDelete)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pk_ORDelivered_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OR_Order.vrWinXinID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrContactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrContactPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrContactAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrContactDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bitDelete)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

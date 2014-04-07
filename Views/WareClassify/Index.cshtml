@@ -1,0 +1,59 @@
+﻿@model IEnumerable<LitchiServer.Models.WA_WareClassify>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>商品分类列表</h2>
+
+<p>
+    @Html.ActionLink("添加商品分类", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+           
+        </th>
+        <th>
+           商铺名称
+        </th>
+        <th>
+           分类名称
+        </th>
+        <th>
+            分类说明
+        </th>
+        <th>
+           分类排序
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.HiddenFor(modelItem => item.pk_WAWareClassify_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SE_Shop.nvrShopName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.intSort)
+        </td>
+       
+        <td>
+            @Html.ActionLink("修改", "Edit", new {  id=item.pk_WAWareClassify_ID }) |
+            @Html.ActionLink("查看", "Details", new { id=item.pk_WAWareClassify_ID }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.pk_WAWareClassify_ID })
+        </td>
+    </tr>
+}
+
+</table>

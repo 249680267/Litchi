@@ -1,0 +1,67 @@
+﻿@model IEnumerable<LitchiServer.Models.CU_Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>顾客信息</h2>
+
+<p>
+    @Html.ActionLink("新建顾客", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+           
+        </th>
+        <th>
+           微信昵称
+        </th>
+        <th>
+            微信号
+        </th>
+        <th>
+           姓名
+        </th>
+        <th>
+           电话
+        </th>
+        <th>
+           地址
+        </th>
+      
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.HiddenFor(modelItem => item.pk_CUCustomer_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrWeiXinName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrWeiXinID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrCustomerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrCustomerPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrCustomerAddress)
+        </td>
+        
+       
+        <td>
+            @Html.ActionLink("修改", "Edit", new { id=item.pk_CUCustomer_ID }) |
+            @Html.ActionLink("查看", "Details", new { id=item.pk_CUCustomer_ID }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.pk_CUCustomer_ID })
+        </td>
+    </tr>
+}
+
+</table>

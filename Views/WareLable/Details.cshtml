@@ -1,0 +1,45 @@
+﻿@model LitchiServer.Models.WA_WareLable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>查看标签</h2>
+
+<fieldset>
+    <legend>WA_WareLable</legend>
+
+    <div class="display-label">
+         @Html.HiddenFor(model => model.pk_WAWareLable_ID)
+    </div>
+    <div class="display-field">
+        @Html.HiddenFor(model => model.pk_WAWareLable_ID)
+    </div>
+
+    <div class="display-label">
+        标签名称：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrName)
+    </div>
+
+    <div class="display-label">
+        商品分类：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WA_WareClassify.nvrName)
+    </div>
+
+    <div class="display-label">
+        标签排序：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.intSort)
+    </div>
+
+   
+</fieldset>
+<p>
+    @Html.ActionLink("修改", "Edit", new { id=Model.pk_WAWareLable_ID }) |
+    @Html.ActionLink("返回列表", "Index")
+</p>

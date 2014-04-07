@@ -1,0 +1,47 @@
+﻿@model IEnumerable<LitchiServer.Models.OR_OrderStatu>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>订单状态列表</h2>
+
+<p>
+    @Html.ActionLink("新建订单状态", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+           
+        </th>
+        <th>
+           状态名称
+        </th>
+        <th>
+           状态描述
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.HiddenFor(modelItem => item.pkOROrderStatu_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrStatusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrStatusDescription)
+        </td>
+       
+        <td>
+            @Html.ActionLink("修改", "Edit", new { id=item.pkOROrderStatu_ID}) |
+            @Html.ActionLink("查看", "Details", new { id=item.pkOROrderStatu_ID }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.pkOROrderStatu_ID })
+        </td>
+    </tr>
+}
+
+</table>

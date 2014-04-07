@@ -1,0 +1,95 @@
+﻿@model IEnumerable<LitchiServer.Models.OR_Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>订单列表</h2>
+<p>
+    
+           @Html.DropDownList("orderstatu", String.Empty)
+           
+</p>
+<div id="or">
+<table>
+    <tr>
+        <th>
+           
+        </th>
+        <th>
+           微信号
+        </th>
+        <th>
+           订单总价
+        </th>
+        <th>
+           下单时间
+        </th>
+        <th>
+            订单状态
+        </th>
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.HiddenFor(modelItem => item.pkOROrder_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vrWinXinID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mnyOrderTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dtmOrderTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OR_OrderStatu.nvrStatusName)
+        </td>
+       
+        <td>
+            @Html.ActionLink("查看", "Details", new { id=item.pkOROrder_ID }) |
+            @Html.ActionLink("确认订单", "Edit", new { statu="确认订单",id=item.pkOROrder_ID }) |
+            @Html.ActionLink("取消订单", "Edit", new {statu="无效订单", id=item.pkOROrder_ID })|
+            @Html.ActionLink("完成订单", "Edit", new {statu="已完成订单", id=item.pkOROrder_ID })|
+            @Html.ActionLink("订单详情", "../Detail/Index", new { orderid=item.pkOROrder_ID })
+        </td>
+    </tr>
+}
+
+</table>
+    </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+   
+    <script src="@Url.Content("~/Scripts/uploadify/jquery.uploadify.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#orderstatu").change(function () {
+                var a=$(this).val();
+               
+                    $.ajax({
+                        type: "post",
+                        url: "/Order/Indexstatu",
+                        data: "param=" + a,
+                        success: function (obj) {
+                           
+                                document.getElementById("or").innerHTML = obj;
+                            
+                        }
+
+
+                    })
+                
+            })
+
+
+        })
+
+        
+        </script>
+    }

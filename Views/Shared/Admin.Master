@@ -1,0 +1,250 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head id="Head1" runat="server">
+    <meta name="viewport" content="width=device-width" />
+    <title>TYStudio-Web前端开发技术<asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
+    <%--<link type="text/css" rel="stylesheet" href="<%: Url.Content("~/Content/Site.css")%>" />--%>
+    <link type="text/css" rel="stylesheet" href="<%: Url.Content("~/Content/jquery/jquery-ui-1.9.2.custom.css") %>" />
+    <script src="<%: Url.Content("~/Scripts/lib/jquery-1.8.3.js") %>"></script>
+    <script src="<%: Url.Content("~/Scripts/lib/jquery-ui-1.9.2.custom.js") %>"></script>
+    <%
+        Html.Telerik().StyleSheetRegistrar()
+           .DefaultGroup(group => group.DefaultPath("~/Content/Telerik").Add("telerik.common.css")
+                                                            .Add("telerik.forest.css"))
+         .Render();                                                                            
+    %>
+</head>
+<body>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
+        <tr>
+            <td height="9" style="line-height: 9px; background-image: url(/Content/Images/green/main_04.gif)">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="97" height="9" background="/Content/Images/green/main_01.gif">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td height="47" background="/Content/Images/green/main_09.gif">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="38" height="47" background="/Content/Images/green/main_06.gif">&nbsp;</td>
+                        <td width="59">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td height="29" background="/Content/Images/green/main_07.gif">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td height="18" background="/Content/Images/green/main_14.gif">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
+                                            <tr>
+                                                <td style="width: 1px;">&nbsp;</td>
+                                                <td><span class="STYLE1"><%:WebMatrix.WebData.WebSecurity.CurrentUserName.ToString() %></span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="155" background="/Content/Images/green/main_08.gif">&nbsp;</td>
+                        <td>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td height="23" valign="bottom">
+                                        <img src="/Content/Images/green/main_12.gif" width="367" height="23" border="0" usemap="#Map" /></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="200" background="/Content/Images/green/main_11.gif">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="11%" height="23">&nbsp;</td>
+                                    <td width="89%" valign="bottom"><span class="STYLE1">日期：<%: DateTime.Now.GetDateTimeFormats('D')[1].ToString() %></span></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <map name="Map" id="Map">
+                    <area shape="rect" coords="3, 1, 49, 22" href="/Admin/Index" />
+                    <area shape="rect" coords="52, 2, 95, 21" href="javascript:history.go(-1);" />
+                    <area shape="rect" coords="102, 2, 144, 21" href="javascript:history.go(1);" />
+                    <area shape="rect" coords="150, 1, 197, 22" href="javascript:window.location.reload();" />
+                    <area shape="rect" coords="210, 2, 304, 20" href="#" />
+                    <area shape="rect" coords="314, 1, 361, 23" href="/Admin/LogOff" />
+                </map>
+            </td>
+        </tr>
+        <tr>
+            <td height="5" style="line-height: 5px; background-image: url(/Content/Images/green/main_18.gif)">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="180" background="/Content/Images/green/main_16.gif" style="line-height: 5px;">&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table width="100%" height="800" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed">
+        <tr>
+            <td background="/Content/Images/green/main_40.gif" style="width: 3px;">&nbsp;</td>
+            <td valign="top" width="177" style="border-right: solid 1px #9ad452;">
+                <table width="177" height="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td valign="top">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout: fixed">
+                                <tr>
+                                    <td height="26" background="/Content/Images/green/main_21.gif">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td height="80" style="background-image: url(/Content/Images/green/main_23.gif); background-repeat: repeat-x;">
+                                        <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td height="45">
+                                                    <div align="center">
+                                                        <a href="#">
+                                                            <img src="/Content/Images/green/main_26.gif" name="Image1" width="40" height="40" border="0" id="Image1" onmouseover="MM_swapImage('Image1','','/Content/Images/green/main_26_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div align="center">
+                                                        <a href="#">
+                                                            <img src="/Content/Images/green/main_28.gif" name="Image2" width="40" height="40" border="0" id="Image2" onmouseover="MM_swapImage('Image2','','/Content/Images/green/main_29_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div align="center">
+                                                        <a href="#">
+                                                            <img src="/Content/Images/green/main_31.gif" name="Image3" width="40" height="40" border="0" id="Image3" onmouseover="MM_swapImage('Image3','','/Content/Images/green/main_31_1.gif',1)" onmouseout="MM_swapImgRestore()" /></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="25">
+                                                    <div align="center" class="STYLE2"><a class="lefttop" href="/User/Index">用户权限</a></div>
+                                                </td>
+                                                <td>
+                                                    <div align="center" class="STYLE2"><a class="lefttop" href="javascript:alert('系统维护中...\n暂不支持此功能')">日志管理</a></div>
+                                                </td>
+                                                <td>
+                                                    <div align="center" class="STYLE2"><a class="lefttop" href="javascript:alert('系统维护中...\n暂不支持此功能')">数据分析</a></div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="line-height: 4px; background: url(/Content/Images/green/main_38.gif)">&nbsp;</td>
+                                </tr>
+                               <tr>
+
+                                   <td>
+                                       <%Html.Telerik().PanelBar().Name("panelbar")
+                                                .ExpandMode(PanelBarExpandMode.Single)
+                                                .HtmlAttributes(new { style = "width:175px" })
+                                                .Items(panelbar =>
+                                                {
+                                                    panelbar.Add().Text("用户管理")
+                                                        .Items(programs =>
+                                                        {
+                                                            programs.Add().Text("添加用户").Action("Create", "User");
+                                                            programs.Add().Text("查询用户").Action("Index", "User");
+                                                        });
+
+                                                    panelbar.Add().Text("角色管理")
+                                                        .Items(programs =>
+                                                        {
+                                                            programs.Add().Text("添加角色").Action("Create", "Role");
+                                                            programs.Add().Text("查询角色").Action("Index", "Role");
+                                                        });
+
+                                                    panelbar.Add().Text("权限管理")
+                                                        .Items(programs =>
+                                                        {
+                                                            programs.Add().Text("添加权限").Action("Create", "Permission");
+                                                            programs.Add().Text("查询权限").Action("Index", "Permission");
+                                                        });
+
+                                                    //panelbar.Add().Text("权限测试")
+                                                    //    .Items(programs =>
+                                                    //    {
+                                                    //        programs.Add().Text("查询产品").Action("Index", "Product");
+                                                    //        programs.Add().Text("添加产品").Action("Create", "Product");
+                                                    //        programs.Add().Text("修改产品").Action("Edit", "Product");
+                                                    //        programs.Add().Text("删除产品").Action("Delete", "Product");
+                                                    //    });
+                                                })
+                                                .ExpandMode(PanelBarExpandMode.Multiple).ExpandAll(true).Render(); %>
+                                   </td>
+                               </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <h3 class="center_title">
+                        <asp:ContentPlaceHolder ID="CenterTitleContent" runat="server" />
+                    </h3>
+                    <div class="success_message">
+                        <div id="SuccessMessage"><%=TempData["SuccessMessage"]%></div>
+                    </div>
+                    <div class="error_message">
+                        <div id="ErrorMessage"><%=TempData["ErrorMessage"]%></div>
+                        <%:Html.ValidationSummary() %>
+                    </div>
+                    <div style="margin: 0 20px;height:600px">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+                        <script>
+                            var datePickers = $("body").find(".date_picker").find("input");
+                            datePickers.each(function (index, item) {
+                                $(item).datepicker({ dateFormat: "yy年mm月dd日" });
+                            });
+                        </script>
+                    </div>
+            </td>
+            <td background="/Content/Images/green/main_42.gif" style="width: 3px;">&nbsp;</td>
+        </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td height="24" background="/Content/Images/green/main_47.gif">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="29" height="24">
+                            <img src="/Content/Images/green/main_45.gif" width="29" height="24" /></td>
+                        <td>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="369"><span class="STYLE1">版本 2013V1.0 </span></td>
+                                    <td width="814" class="STYLE1">&nbsp;</td>
+                                    <td width="185" nowrap="nowrap" class="STYLE1">
+                                        <div align="center">
+                                            <img src="/Content/Images/green/main_51.gif" width="12" height="12" />
+                                            如有疑问请与技术人员联系
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="14">
+                            <img src="/Content/Images/green/main_49.gif" width="14" height="24" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <% Html.Telerik().ScriptRegistrar().DefaultGroup(group=>group.DefaultPath("~/Scripts/Telerik")).Render(); %>
+    <% Html.Telerik().ScriptRegistrar().Globalization(true); %>
+    <script type="text/javascript">        function Handler() { }</script>
+    <script src="<%: Url.Content("~/Scripts/Handler.js?1401") %>"></script>
+</body>
+</html>

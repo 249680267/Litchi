@@ -1,0 +1,95 @@
+﻿@model LitchiServer.Models.AU_LoginUser
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>AU_LoginUser</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pk_AULoginUser_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pk_AULoginUser_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nvrLoginAccount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrLoginAccount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.vrPassword)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vrPassword)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nvrUserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrUserName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.vrPhoneNum)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vrPhoneNum)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.vrEMail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vrEMail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.vrContactUs)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vrContactUs)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dtmCreatTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dtmCreatTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dtmLastLoginTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dtmLastLoginTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.intSum)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.intSum)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.bitDelete)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.bitDelete)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

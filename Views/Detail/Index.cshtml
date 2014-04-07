@@ -1,0 +1,57 @@
+﻿@model IEnumerable<LitchiServer.Models.OR_DetailOrder>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>订单详细</h2>
+
+<table>
+    <tr>
+        <th>
+           
+        </th>
+        <th>
+          微信号
+        </th>
+        <th>
+           商品名称
+        </th>
+        <th>
+            商品数量
+        </th>
+        <th>
+           商品单价
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.HiddenFor(modelItem => item.pkORDetailOrderID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OR_Order.vrWinXinID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WA_Ware.nvrWareName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fltWareNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mnyWarePrice)
+        </td>
+     
+       
+    </tr>
+}
+
+</table>
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   联系人姓名：@ViewBag.name  &nbsp;&nbsp;&nbsp; 电话：@ViewBag.phone   &nbsp;&nbsp;&nbsp; 地址：@ViewBag.address   &nbsp;&nbsp;&nbsp; 备注：@ViewBag.description</p>
+<p>
+<p>
+ @Html.ActionLink("返回", "../Order/Index")
+</p>

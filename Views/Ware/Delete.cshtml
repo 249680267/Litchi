@@ -1,0 +1,106 @@
+﻿@model LitchiServer.Models.vWareMessage
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>WA_Ware</legend>
+
+    <div class="display-label"  style="display:none">
+         @Html.DisplayNameFor(model => model.pk_WAWare_ID)
+    </div>
+    <div class="display-field" style="display:none">
+        @Html.DisplayFor(model => model.pk_WAWare_ID)
+    </div>
+
+    <div class="display-label">
+        分类名称：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrName)
+    </div>
+
+    <div class="display-label">
+         商品名称：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrWareName)
+    </div>
+
+    <div class="display-label">
+         价格：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mnyPrice)
+    </div>
+
+    <div class="display-label">
+        数量：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.intNum)
+    </div>
+
+    <div class="display-label">
+        商品详情：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrDetail)
+    </div>
+
+    <div class="display-label">
+        商品状态：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.bitStatus)
+    </div>
+
+    <div class="display-label">
+        商品销量：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.intSales)
+    </div>
+
+    <div class="display-label">
+        商品排序：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.intSort)
+    </div>
+    <div class="display-label">
+        商品标签：
+    </div>
+    <div id="la" class="editor-field">
+           <table>
+                @{var n = 0;}
+                @foreach(var item in ViewBag.list){
+                <tr>
+                     @{var select = false; }
+              @foreach (var mo in ViewBag.listlable)
+             {
+               
+                if (item.pk_WAWareLable_ID == mo.pk_WAWareLable_ID)
+                {
+                    select = true;   
+                }
+             }
+                 <td>@Html.CheckBox("templateId"+ ++n,select,new { value = item.pk_WAWareLable_ID })</td>
+                 <td><input type="text"  value="@item.nvrName" /></td>
+                </tr>
+                }
+            </table>
+
+        </div> 
+   
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="确定删除" /> |
+        @Html.ActionLink("返回列表", "Index")
+    </p>
+}

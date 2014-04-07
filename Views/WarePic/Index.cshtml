@@ -1,0 +1,63 @@
+﻿@model IEnumerable<LitchiServer.Models.WA_WarePic>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pk_WAWarePic_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WA_Ware.nvrWareName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vrPic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vrBigPic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vrSort)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bitDelete)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pk_WAWarePic_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WA_Ware.nvrWareName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vrPic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vrBigPic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vrSort)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bitDelete)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<LitchiServer.Models.CU_Associator>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>会员信息</h2>
+
+<p>
+    @Html.ActionLink("新建会员", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+          
+        </th>
+        <th>
+            微信昵称
+        </th>
+        <th>
+           累计消费额
+        </th>
+        <th>
+           累计订单次数
+        </th>
+        <th>
+            账户余额
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.HiddenFor(modelItem => item.pk_CUAssociator_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CU_Customer.nvrWeiXinName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mnyTotalSum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.intOrderSum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mnyBalance)
+        </td>
+       
+        <td>
+            @Html.ActionLink("修改", "Edit", new { id=item.pk_CUAssociator_ID }) |
+            @Html.ActionLink("查看", "Details", new {id=item.pk_CUAssociator_ID }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.pk_CUAssociator_ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,75 @@
+﻿@model LitchiServer.Models.OR_DetailOrder
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>OR_DetailOrder</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.pkORDetailOrderID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.pkORDetailOrderID)
+            @Html.ValidationMessageFor(model => model.pkORDetailOrderID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fkOROrderID, "OR_Order")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("fkOROrderID", String.Empty)
+            @Html.ValidationMessageFor(model => model.fkOROrderID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fkWAWareID, "WA_Ware")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("fkWAWareID", String.Empty)
+            @Html.ValidationMessageFor(model => model.fkWAWareID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fltWareNum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.fltWareNum)
+            @Html.ValidationMessageFor(model => model.fltWareNum)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.mnyWarePrice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.mnyWarePrice)
+            @Html.ValidationMessageFor(model => model.mnyWarePrice)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.bitDelete)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.bitDelete)
+            @Html.ValidationMessageFor(model => model.bitDelete)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

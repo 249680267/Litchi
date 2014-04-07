@@ -1,0 +1,52 @@
+﻿@model LitchiServer.Models.CU_Associator
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>查看会员</h2>
+
+<fieldset>
+    <legend>CU_Associator</legend>
+
+    <div class="display-label" style="display:none">
+         @Html.DisplayNameFor(model => model.pk_CUAssociator_ID)
+    </div>
+    <div class="display-field" style="display:none">
+        @Html.DisplayFor(model => model.pk_CUAssociator_ID)
+    </div>
+
+    <div class="display-label">
+         微信昵称：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CU_Customer.nvrWeiXinName)
+    </div>
+
+    <div class="display-label">
+         累计消费额
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mnyTotalSum)
+    </div>
+
+    <div class="display-label">
+        累计订单次数
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.intOrderSum)
+    </div>
+
+    <div class="display-label">
+         账户余额：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mnyBalance)
+    </div>
+
+   
+</fieldset>
+<p>
+    @Html.ActionLink("修改", "Edit", new { id=Model.pk_CUAssociator_ID }) |
+    @Html.ActionLink("返回列表", "Index")
+</p>

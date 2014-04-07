@@ -1,0 +1,57 @@
+﻿@model LitchiServer.Models.WA_WarePic
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>WA_WarePic</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pk_WAWarePic_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pk_WAWarePic_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WA_Ware.nvrWareName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WA_Ware.nvrWareName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.vrPic)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vrPic)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.vrBigPic)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vrBigPic)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.vrSort)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vrSort)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.bitDelete)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.bitDelete)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

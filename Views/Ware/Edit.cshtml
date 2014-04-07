@@ -1,0 +1,315 @@
+﻿@model LitchiServer.Models.vWareMessage
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>修改商品</h2>
+ <script type="text/javascript">
+
+     function AutoResizeImage(maxWidth, maxHeight, objImg) {
+         var img = new Image();
+         img.src = objImg.src;
+         var hRatio;
+         var wRatio;
+         var Ratio = 1;
+         var w = img.width;
+         var h = img.height;
+         wRatio = maxWidth / w;
+         hRatio = maxHeight / h;
+         if (maxWidth == 0 && maxHeight == 0) {
+             Ratio = 1;
+         } else if (maxWidth == 0) {//
+             if (hRatio < 1) Ratio = hRatio;
+         } else if (maxHeight == 0) {
+             if (wRatio < 1) Ratio = wRatio;
+         } else if (wRatio < 1 || hRatio < 1) {
+             Ratio = (wRatio <= hRatio ? wRatio : hRatio);
+         }
+         if (Ratio < 1) {
+             w = w * Ratio;
+             h = h * Ratio;
+         }
+         objImg.height = h;
+         objImg.width = w;
+     }
+
+        //图片拼接
+         function getpic() {
+            
+             var ss="";
+             for (var i = 1; i > 0; i++) {
+                 var str = document.getElementById("p" + i);
+                 if (str != null) {
+                     if (str.style.display != "none") {
+                         ss += str.src + "|";
+                     }
+                 }
+                 else {
+                     i = -1;
+                 }
+             }
+             return ss;
+            
+         }
+        //删除图片
+         function Delete(objimage) {
+             if (window.confirm("确定删除吗？")) {
+                 objimage.style.display = "none";
+                 return true;
+             } else {
+                 return false;
+             }
+         }
+         //得到多选框
+         function boxget() {
+             var b = "";
+             for (var i = 1; i > 0; i++) {
+                 var al = document.getElementById("templateId" + i);
+
+                 if (al == null) {
+                     i = -1;
+                 }
+                 else {
+                     if (al.checked) {
+                         b += al.value + ",";
+
+                     }
+                 }
+
+             }
+             return b;
+         }
+
+
+  </script>
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>WA_Ware</legend>
+
+        <div class="editor-label" style="display:none">
+            @Html.LabelFor(model => model.pk_WAWare_ID)
+        </div>
+        <div class="editor-field" style="display:none">
+            @Html.EditorFor(model => model.pk_WAWare_ID)
+            @Html.ValidationMessageFor(model => model.pk_WAWare_ID)
+        </div>
+
+         <div class="editor-label">
+           商品名称：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrWareName)
+            @Html.ValidationMessageFor(model => model.nvrWareName)
+        </div>
+
+        <div class="editor-label">
+           商品分类：
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("fkWAWareClassifyID", String.Empty)
+            @Html.ValidationMessageFor(model => model.fkWAWareClassifyID)
+        </div>
+
+       
+
+        <div class="editor-label">
+            商品价格:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.mnyPrice)
+            @Html.ValidationMessageFor(model => model.mnyPrice)
+        </div>
+
+        <div class="editor-label">
+           商品数量：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.intNum)
+            @Html.ValidationMessageFor(model => model.intNum)
+        </div>
+
+        <div class="editor-label">
+           商品详情：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrDetail)
+            @Html.ValidationMessageFor(model => model.nvrDetail)
+        </div>
+
+        <div class="editor-label">
+           商品状态：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.bitStatus)
+            @Html.ValidationMessageFor(model => model.bitStatus)
+        </div>
+
+        <div class="editor-label">
+           商品销量：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.intSales)
+            @Html.ValidationMessageFor(model => model.intSales)
+        </div>
+
+        <div class="editor-label">
+            商品排序：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.intSort)
+            @Html.ValidationMessageFor(model => model.intSort)
+        </div>
+         <div class="editor-label">
+            商品标签:
+        </div>
+        <div id="la" class="editor-field">
+           <table>
+                @{var n = 0;}
+                @foreach(var item in ViewBag.list){
+                <tr>
+                     @{var select = false; }
+              @foreach (var mo in ViewBag.listlable)
+             {
+               
+                if (item.pk_WAWareLable_ID == mo.pk_WAWareLable_ID)
+                {
+                    select = true;   
+                }
+             }
+                 <td>@Html.CheckBox("templateId"+ ++n,select,new { value = item.pk_WAWareLable_ID })</td>
+                 <td><input type="text"  value="@item.nvrName" /></td>
+                </tr>
+                }
+            </table>
+
+        </div> 
+
+
+
+        @*上传图片 *@
+        <input id="file_upload" name="file_upload" type="file" />
+        @*<input id="del" type="button" value="删除" />*@
+        <div id="div_img_list" class="xiangce_biaoqian_right_shangchuanzhaopian">
+            @{var i = 0; var p = "p";}
+        @foreach (var pic in ViewData["warepicList"] as List<LitchiServer.Models.WA_WarePic>)
+        {
+            p = "p";
+            i++;
+            p=p+i;
+            <img id="@p" src="@Url.Content(pic.vrPic)" onload="AutoResizeImage(0,250,this)" alt="..." onclick="return Delete(this)" />
+        }
+        </div>
+
+       
+
+        <p>
+            <input id="sub" type="submit" value="保存"  />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("返回列表", "Index")
+</div>
+<link href="../../css/css.css" rel="stylesheet" type="text/css" />
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+   
+    <script src="@Url.Content("~/Scripts/uploadify/jquery.uploadify.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+       
+       
+        $(function () {
+            $("#fkWAWareClassifyID").change(function ware() {
+                var va = $(this).val();
+                $.ajax({
+                    type: "post",
+                    url: "/Ware/Warelabel",
+                    data: "param=" + va,
+                    success: function (obj) {
+                        document.getElementById("la").innerHTML = obj;
+
+                    }
+
+                })
+
+
+            })
+
+
+           
+            $("#sub").click(function () {
+                var pa = boxget();
+
+                $.ajax({
+                    type: "post",
+                    url: "/Ware/EditWarelabel",
+                    data: "param=" + pa,
+                    success: function (obj) {
+
+
+                    }
+                })
+
+
+                var param = getpic();
+                
+                $.ajax({
+                    type: "post",
+                    url: "/Home/GetPic",
+                    data: "param=" + param,
+                    success: function (obj) {
+                    
+                  
+                }
+                })
+            })
+
+
+            $("#file_upload").uploadify({
+                queueID: "1",
+                swf: '/Scripts/uploadify/uploadify.swf',
+                uploader: '/Home/Upload', // 上传文件，后台上传方法
+                buttonImage: "/images/xiangcebiaoqian_anniu.gif", // 按钮图片地址
+                fileSizeLimit: '100000000KB', // 最大允许文件上传大小，这里是 10M
+                fileTypeDesc: 'Image Files',
+                fileTypeExts: '*.gif; *.jpg; *.png; *.jpeg',
+                auto: true, // 自动上传
+                uploadLimit: 20, // 允许文件上传个数
+                queueSizeLimit: 5, // 允许同时文件上传个数
+                width: 159, // 上传按钮的宽度
+                height: 47, // 上传按钮的高度
+                onSelect: function (file) { // 选择文件的事件
+                    var name = file.name;
+                    if (name.length >= 10) {
+                        var index = name.lastIndexOf(".");
+                        name = name.substr(0, 8) + "...." + name.substr(index + 1);
+                    }
+                    var html = '<div id="div_id_' + file.id + '" class="uploading"><div id="div_title_' + file.id + '" class="uploading_file_name">' + name + '<div><div id="div_uploading_' + file.id + '" class="uploading_schedule">0%</div></div>';
+                    $("#div_img_list").append(html);
+
+                },
+                onUploadProgress: function (file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) { // 上传文件的进度事件
+                    var v = Math.round(bytesUploaded / bytesTotal * 100);
+                    $('#div_uploading_' + file.id).html(v + "%");
+                },
+                onUploadSuccess: function (file, data, response) { // 上传文件成功之后的事件
+                    $("#div_title_" + file.id).remove();
+                    $("#div_uploading_" + file.id).remove();
+                    var html = '<img alt="" src="' + data + '" />';
+                    html += "<a href=\"javascript:\" onclick=\"DeleteFile('" + file.id + "');\">X</a>";
+                    $("#div_id_" + file.id).html(html);
+                }
+            });
+        });
+
+        // 移除图片
+        function DeleteFile(id) {
+            $("#div_id_" + id).remove();
+        }
+    </script>
+}

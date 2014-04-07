@@ -1,0 +1,33 @@
+﻿@model LitchiServer.Models.OR_OrderStatu
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>查看订单状态</h2>
+
+<fieldset>
+    <legend>OR_OrderStatu</legend>
+
+   
+
+    <div class="display-label">
+        状态名称:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrStatusName)
+    </div>
+
+    <div class="display-label">
+        订单描述:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrStatusDescription)
+    </div>
+
+  
+</fieldset>
+<p>
+    @Html.ActionLink("修改", "Edit", new { id=Model.pkOROrderStatu_ID }) |
+    @Html.ActionLink("返回列表", "Index")
+</p>

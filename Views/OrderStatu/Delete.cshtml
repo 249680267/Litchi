@@ -1,0 +1,40 @@
+﻿@model LitchiServer.Models.OR_OrderStatu
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>删除订单状态吗？</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>OR_OrderStatu</legend>
+
+    <div class="display-label" style="display:none">
+         @Html.DisplayNameFor(model => model.pkOROrderStatu_ID)
+    </div>
+    <div class="display-field"  style="display:none">
+        @Html.DisplayFor(model => model.pkOROrderStatu_ID)
+    </div>
+
+    <div class="display-label">
+        订单名称：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrStatusName)
+    </div>
+
+    <div class="display-label">
+        订单描述：
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrStatusDescription)
+    </div>
+
+   
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="确认" /> |
+        @Html.ActionLink("返回列表", "Index")
+    </p>
+}

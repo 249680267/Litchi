@@ -1,0 +1,75 @@
+﻿@model LitchiServer.Models.WA_WarePic
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>WA_WarePic</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.pk_WAWarePic_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.pk_WAWarePic_ID)
+            @Html.ValidationMessageFor(model => model.pk_WAWarePic_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fkWAWareID, "WA_Ware")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("fkWAWareID", String.Empty)
+            @Html.ValidationMessageFor(model => model.fkWAWareID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.vrPic)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.vrPic)
+            @Html.ValidationMessageFor(model => model.vrPic)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.vrBigPic)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.vrBigPic)
+            @Html.ValidationMessageFor(model => model.vrBigPic)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.vrSort)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.vrSort)
+            @Html.ValidationMessageFor(model => model.vrSort)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.bitDelete)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.bitDelete)
+            @Html.ValidationMessageFor(model => model.bitDelete)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

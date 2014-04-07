@@ -1,0 +1,61 @@
+﻿@model LitchiServer.Models.WA_WareLable
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>修改标签</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>WA_WareLable</legend>
+
+        <div class="editor-label" style="display:none">
+            @Html.LabelFor(model => model.pk_WAWareLable_ID)
+        </div>
+        <div class="editor-field" style="display:none">
+            @Html.EditorFor(model => model.pk_WAWareLable_ID)
+            @Html.ValidationMessageFor(model => model.pk_WAWareLable_ID)
+        </div>
+
+        <div class="editor-label">
+            标签名称：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrName)
+            @Html.ValidationMessageFor(model => model.nvrName)
+        </div>
+
+        <div class="editor-label">
+           商品分类：
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("fkWAWareClassifyID", String.Empty)
+            @Html.ValidationMessageFor(model => model.fkWAWareClassifyID)
+        </div>
+
+        <div class="editor-label">
+           标签排序：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.intSort)
+            @Html.ValidationMessageFor(model => model.intSort)
+        </div>
+
+        
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("返回列表", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

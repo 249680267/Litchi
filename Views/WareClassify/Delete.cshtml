@@ -1,0 +1,49 @@
+﻿@model LitchiServer.Models.WA_WareClassify
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>删除分类</h2>
+
+<h3>确定要删除这个商品分类吗？</h3>
+<fieldset>
+    <legend>WA_WareClassify</legend>
+
+    <div class="display-label">
+         @Html.HiddenFor(model => model.pk_WAWareClassify_ID)
+    </div>
+    <div class="display-field">
+        @Html.HiddenFor(model => model.pk_WAWareClassify_ID)
+    </div>
+
+
+    <div class="display-label">
+        分类名称：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrName)
+    </div>
+
+    <div class="display-label">
+        分类描述：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrDescription)
+    </div>
+
+    <div class="display-label">
+         分类排序：
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.intSort)
+    </div>
+
+   
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="确认" /> |
+        @Html.ActionLink("返回列表", "Index")
+    </p>
+}

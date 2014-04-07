@@ -1,0 +1,93 @@
+﻿@model IEnumerable<LitchiServer.Models.AU_LoginUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pk_AULoginUser_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nvrLoginAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vrPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nvrUserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vrPhoneNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vrEMail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vrContactUs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dtmCreatTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dtmLastLoginTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.intSum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bitDelete)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pk_AULoginUser_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrLoginAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vrPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrUserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vrPhoneNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vrEMail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vrContactUs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dtmCreatTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dtmLastLoginTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.intSum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bitDelete)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

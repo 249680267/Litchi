@@ -1,0 +1,63 @@
+﻿@model LitchiServer.Models.CU_Associator
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>添加会员</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>CU_Associator</legend>
+
+        
+
+        <div class="editor-label">
+           微信昵称：
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("fkCUCustomerID", String.Empty)
+            @Html.ValidationMessageFor(model => model.fkCUCustomerID)
+        </div>
+
+        <div class="editor-label">
+            累计消费额：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.mnyTotalSum)
+            @Html.ValidationMessageFor(model => model.mnyTotalSum)
+        </div>
+
+        <div class="editor-label">
+           累计订单次数：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.intOrderSum)
+            @Html.ValidationMessageFor(model => model.intOrderSum)
+        </div>
+
+        <div class="editor-label">
+           账户余额：
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.mnyBalance)
+            @Html.ValidationMessageFor(model => model.mnyBalance)
+        </div>
+
+       
+
+        <p>
+            <input type="submit" value="保存" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("返回列表", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

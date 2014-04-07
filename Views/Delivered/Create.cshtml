@@ -1,0 +1,83 @@
+﻿@model LitchiServer.Models.OR_Delivered
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>OR_Delivered</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.pk_ORDelivered_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.pk_ORDelivered_ID)
+            @Html.ValidationMessageFor(model => model.pk_ORDelivered_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fkOROrderID, "OR_Order")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("fkOROrderID", String.Empty)
+            @Html.ValidationMessageFor(model => model.fkOROrderID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nvrContactName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrContactName)
+            @Html.ValidationMessageFor(model => model.nvrContactName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nvrContactPhone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrContactPhone)
+            @Html.ValidationMessageFor(model => model.nvrContactPhone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nvrContactAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrContactAddress)
+            @Html.ValidationMessageFor(model => model.nvrContactAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nvrContactDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrContactDescription)
+            @Html.ValidationMessageFor(model => model.nvrContactDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.bitDelete)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.bitDelete)
+            @Html.ValidationMessageFor(model => model.bitDelete)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

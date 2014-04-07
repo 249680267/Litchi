@@ -1,0 +1,74 @@
+﻿@model LitchiServer.Models.SE_Shop
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>删除</h2>
+
+<h3>您确定需要删除此条店铺信息吗?</h3>
+<fieldset>
+    <legend>SE_Shop</legend>
+
+    <div class="display-label">
+         商家名称
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SE_Seller.nvrSellerName)
+    </div>
+
+    <div class="display-label">
+         店铺分类
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SEShopClassify.nvrClassifyName)
+    </div>
+
+    <div class="display-label">
+         店铺名称
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrShopName)
+    </div>
+
+    <div class="display-label">
+         描述
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nvrDescription)
+    </div>
+
+    <div class="display-label">
+         店铺地址
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vrAddress)
+    </div>
+
+    <div class="display-label">
+         联系电话
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vrPhone)
+    </div>
+
+    <div class="display-label">
+         服务范围
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fltScope)
+    </div>
+
+    <div class="display-label">
+         店铺状态
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SEShopStatu.nvrStatusName)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="删除" /> |
+        @Html.ActionLink("返回店铺列表", "Index")
+    </p>
+}

@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="robots" content="noindex, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.css">-->
+<script src="jquery-1.8.3.min.js"></script>
+<script src="jquery.mobile-1.3.2.min.js"></script>
+<link rel="stylesheet" href="jquery.mobile-1.3.2.css">
+<link rel="stylesheet" href="css/order.css">
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>-->
+<script>
+	$(document).ready(function(e) {		
+		$("span").on("tap", function () {
+                var as = $(this).text();
+                var b = $("#total").text();
+                var reg = new RegExp("^[0-9]*$");
+                if (!reg.test(as)) {
+
+                } else {
+                    var total = Number(as) + Number(b);
+                    var nu = $("#number").text();
+                   var num = Number(nu)+1;
+                   document.getElementById("number").textContent = num;
+                    document.getElementById("total").textContent = total;
+                }
+            })
+			
+		 $("label").on("tap", function () {
+                var as = $(this).text();
+                var b = $("#total").text();
+                if (as == "+") {
+                    document.getElementById("total").textContent = 100;
+
+                } else if (as == "-") {
+                    document.getElementById("total").textContent = 50;
+                }
+            })
+			
+		 $("#btnWare").click(function(){
+				$("#wareList").show();
+				$("#shopMsg").hide();
+			})
+		 $("#btnShop").click(function(){
+				$("#wareList").hide();
+				$("#shopMsg").show();
+			}) 
+		$("#shopMsg").hide();
+    });
+</script>
+</head>
+<body>
+
+<div data-role="page" id="pageone" >
+	<!--左侧的Panel-->
+	<div data-role="panel" id="defaultPanel" data-position="left" data-display="reveal" data-theme="a" class="ui-bar-a">
+    	<ul data-role="listview">
+        	<li>
+            		<img src="image/sf.png">
+                	<h2>独照漫沙</h2>
+                    <p>积分 0 魅力值 0</p>
+            </li>
+        </ul>
+		<div class="heigth:50px"></div>	
+        <ul data-role="listview" class="ui-btn-up-b">
+        	<li data-icon="false"><a href="#" data-transition="flip"><img src="image/sf.png" alt="我要订餐" class="ui-li-icon ui-corner-none">我要订餐</a></li>
+        	<li data-icon="false"><a href="#shopMessage" id="panelShop" data-transition="flip"><img src="image/sf.png" alt="我要订餐" class="ui-li-icon ui-corner-none">店铺信息</a></li>
+        	<li data-icon="false"><a href="#ordering" data-transition="flip"><img src="image/sf.png" alt="我的订单" class="ui-li-icon ui-corner-none">我的订单</a></li>
+        </ul>
+    </div>
+	<!--头部-->
+  <div data-role="header" data-position="fixed" data-fullscreen="false">
+    <a href="#defaultPanel" data-role="button" data-icon="gear">菜单</a>
+    <h1>欢迎进入V外卖</h1>
+    <a href="#" data-role="button" data-icon="home" id="aHome">首页</a>
+  </div>
+  <!--内容部分-->
+  <div data-role="content">
+  	<div id="divShopList">
+      <!--<div data-role="navbar" data-iconpos="left">
+        <ul >
+            <li><a href="#" data-icon="grid" id="Btnlist" >列表</a></li>
+            <li><a href="#" data-icon="star" id="Btnmap">地图</a></li>
+        </ul>
+      </div>-->
+      	<ul data-role="listview" data-inset="true" id="shopList" data-filter="true" data-filter-placeholder="搜索店铺">
+            <li data-icon="plus">
+                <a href="#ware" data-transition="flip"><img src="image/sf.png">
+                    <h2>中国心</h2>
+                    <p>大喜龙虾联盟路店</p>
+                </a>
+            </li>
+            <li data-icon="plus">
+                <a href="#ware" data-transition="flip"><img src="image/sf.png">
+                    <h2>中国心</h2>
+                    <p>大喜龙虾联盟路店</p>
+                </a>
+            </li>
+            <li data-icon="plus">
+                <a href="#ware" data-transition="flip"><img src="image/sf.png">
+                    <h2>中国心</h2>
+                    <p>大喜龙虾联盟路店</p>
+                </a>
+            </li>
+            <li data-icon="plus">
+                <a href="#ware" data-transition="flip"><img src="image/sf.png">
+                    <h2>大喜龙虾</h2>
+                    <p>大喜龙虾联盟路店</p>
+                </a>
+            </li>
+         </ul>
+     </div>
+    <!--<div id="shopMap" style="height:370px">
+    	
+    </div>-->
+  </div>
+  <!--页脚部分-->
+  <div data-role="footer" data-position="fixed">
+  <h1>页脚文本</h1>
+  </div>
+</div> 
+<!--店铺页面-->
+<section data-role="page" id="shopMessage">
+	<div data-role="header" data-position="fixed" data-fullscreen="false">
+		<h1>XXX店铺</h1>
+        <a href="#pageone" data-role="button" data-icon="back">返回</a>
+	</div>
+	<div data-role="content">
+    	<div style="text-align:center;">
+        	<img src="image/Shop.jpg" style="max-width:320px" />
+        </div>
+         
+        <div data-role="fieldcontain">
+         <fieldset data-role="collapsible">
+        	<legend>公告</legend>
+            <input type="text" readonly=true value="今天天气晴好，老板心情也好，大赏天下"/>
+          </fieldset>
+        </div>
+        <div data-role="collapsible" data-collapsed="false" data-theme="e">
+            <h3>店铺信息</h3>
+            <p>店铺状态： 正常</p>
+            <p>店铺分类： 食品类</p>
+            <p>营业时间： 8:00-21:00</p>
+            <p>店铺地址： 石家庄联盟西路5号万邦大厦</p>
+            <p>电话： 0311-88111155</p>
+            <p>起送价格： 0元</p>
+            <p>服务半径： 3公里</p>
+            <p>配送区域： 顺丰神配送，要到哪里到哪里</p>
+         </div>
+	</div>
+	
+	<div data-role="footer" data-position="fixed">
+		<h1>页脚文本</h1>
+	</div>
+</section>
+<!--商品页面-->
+<section data-role="page" id="ware">
+        <div data-role="header"   data-position="fixed" >
+            <a href="#"  data-rel="back"  data-role="button">返回</a>
+            <h1>菜品列表</h1>
+      <div data-role="navbar">
+      <ul>
+      <li><a href="#" id="btnWare">菜单</a></li>
+      <li><a href="#" id="btnShop">餐厅介绍</a></li>
+     </ul>
+     </div>
+        </div>
+        <div data-role="content">
+         <div id="wareList">
+            <ul data-role="listview" data-filter="true" data-filter-placeholder="搜索菜品">
+                 <li><a href="#">炒饼<span class="ui-li-count" >12</span></a></li>
+                 <li><a href="#">土豆丝盖饭<span class="ui-li-count">10</span></a></li>
+                 <li><a href="#">扬州炒饭<span class="ui-li-count">12</span></a></li>
+                <li><a href="#">青椒肉丝盖饭<span class="ui-li-count">10</span></a></li>
+                <li><a href="#">地三鲜盖饭<span class="ui-li-count">8</span></a></li>
+                <li><a href="#">麻辣豆腐盖饭<span class="ui-li-count">10</span></a></li>
+                <li><a href="#">红烧茄子<span class="ui-li-count">12</span></a></li>
+                <li><a href="#">烤鸭<span class="ui-li-count">35</span></a></li>                
+            </ul>
+          </div>
+          <div id="shopMsg">
+          	<div style="text-align:center;">
+        	<img src="image/Shop.jpg" style="max-width:320px" />
+            </div>
+            <div data-role="fieldcontain">
+             <fieldset data-role="collapsible">
+                <legend>公告</legend>
+                <input type="text" readonly=true value="今天天气晴好，老板心情也好，大赏天下"/>
+              </fieldset>
+            </div>
+            <div data-role="collapsible" data-collapsed="false" data-theme="e">
+                <h3>店铺信息</h3>
+                <p>店铺状态： 正常</p>
+                <p>店铺分类： 食品类</p>
+                <p>营业时间： 8:00-21:00</p>
+                <p>店铺地址： 石家庄联盟西路5号万邦大厦</p>
+                <p>电话： 0311-88111155</p>
+                <p>起送价格： 0元</p>
+                <p>服务半径： 3公里</p>
+                <p>配送区域： 顺丰神配送，要到哪里到哪里</p>
+             </div>
+          </div>
+        </div>
+
+        <div data-role="footer" data-position="fixed" >
+            <h3 style="text-align:left" >共<label id="number" >0</label>  份   总价：￥<label id="total" >0</label></h3>
+            <a href="#Order" data-role="button" class="ui-btn-right" data-transition="slide">下单</a>
+        </div>
+    </section>
+<!--下单页面-->
+  <section data-role="page" id="order">
+        <div data-role="header" data-position="fixed">
+            <a href="#" data-rel="back" data-role="button">返回</a>
+            <h1>订单列表</h1>
+        </div>
+
+        <div data-role="content">
+            <ul data-role="listview">
+                <li><a herf="#">炒饼
+                    <label id="Label1" name="Label1" class="jz">+</label>
+                    <label id="label2" class="so">2</label>
+                    <label id="Label3" class="jo">-</label></a>
+                </li>
+                <li><a href="#">土豆丝盖饭
+                    <label id="Label4" class="jz">+</label>
+                    <label id="label5" class="so">1</label>
+                    <label id="Label6" class="jo">-</label></a></li>
+                <li><a href="#">扬州炒饭
+                    <label id="Label7" class="jz">+</label>
+                    <label id="label8" class="so">1</label>
+                    <label id="Label9" class="jo">-</label></a></li>
+                <li><a href="#">青椒肉丝盖饭
+                    <label id="Label10" class="jz">+</label>
+                    <label id="label11" class="so">1</label>
+                    <label id="Label12" class="jo">-</label></a></li>
+                <li><a href="#">地三鲜盖饭
+                    <label id="Label13" class="jz">+</label>
+                    <label id="label14" class="so">1</label>
+                    <label id="Label15" class="jo">-</label></a></li>
+                <li><a href="#">麻辣豆腐盖饭
+                    <label id="Label16" class="jz">+</label>
+                    <label id="label17" class="so">1</label>
+                    <label id="Label18" class="jo">-</label></a></li>
+                <li><a href="#">红烧茄子
+                    <label id="Label19" class="jz">+</label>
+                    <label id="label20" class="so">1</label>
+                    <label id="Label21" class="jo">-</label></a></li>
+                <li><a href="#">烤鸭
+                    <label id="Label22" class="jz">+</label>
+                    <label id="label23" class="so">1</label>
+                    <label id="Label24" class="jo">-</label></a></li>
+
+            </ul>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <h5 style="text-align: right">总价：￥<label id="total">125</label></h5>
+            <p><a href="#address" data-transition="flip" data-role="button">确认订单</a></p>
+        </div>
+    </section>
+<!--送货地址-->
+<section data-role="page" id="address">
+        <div data-role="header" data-position="fixed">
+            <a href="#" data-rel="back" data-role="button">返回</a>
+            <h1>送货信息</h1>
+        </div>
+        <div data-role="content">
+            <form method="post" action="">
+                <div data-role="fieldcontain">
+                    <label for="addr">地址：</label>
+                    <input type="text" name="addr" id="addr"/>
+
+                    <label for="phone">电话：</label>
+                    <input type="text" name="phone" id="phone"/>
+
+                    <label for="name">姓名：</label>
+                    <input type="text" name="name" id="name" placeholder=""/>
+
+
+                     <label for="remark">备注：</label>
+                    <input type="text" name="remark" id="remark" placeholder=""/>
+                </div>
+                 <input type="submit" data-inline="true" value="提交">
+            </form>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <h3 style="text-align: right"></h3>
+        </div>
+    </section>    
+<!--我的订单--><section data-role="page" id="ordering">
+        <div data-role="header" data-position="fixed">
+            <a href="#" data-rel="back" data-role="button">返回</a>
+            <h1>订单列表</h1>
+        </div>
+        <div data-role="content">
+            <ul data-role="listview">
+                <li><a herf="#" >炒饼 <span class="ui-li-count">10</span></a>
+                </li>
+                <li><a href="#">土豆丝盖饭<span class="ui-li-count">10</span></a></li>
+                <li><a href="#">扬州炒饭<span class="ui-li-count">12</span></a></li>
+                <li><a href="#">青椒肉丝盖饭<span class="ui-li-count">10</span></a></li>
+                <li><a href="#">地三鲜盖饭<span class="ui-li-count">8</span></a></li>
+                <li><a href="#">麻辣豆腐盖饭<span class="ui-li-count">10</span></a></li>
+                <li><a href="#">红烧茄子<span class="ui-li-count">12</span></a></li>
+                <li><a href="#">烤鸭<span class="ui-li-count">35</span></a></li>
+
+            </ul>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <h3 style="text-align: right">总价：￥<label id="total">0</label></h3>
+        </div>
+    </section>
+</body>
+<script type="text/javascript" src="MapJS.js" ></script>
+</html>

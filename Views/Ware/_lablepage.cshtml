@@ -1,0 +1,60 @@
+﻿ 
+
+
+
+
+<table>
+                @{var i = 0;}
+                @foreach(var item in ViewBag.list){
+                <tr>
+                 <td>@Html.CheckBox("templateId"+ ++i,false,new { value = item.pk_WAWareLable_ID })</td>
+                 <td>@item.nvrName</td>
+                </tr>
+                }
+            </table>
+
+
+@section Scripts {
+     @Scripts.Render("~/bundles/jqueryval")
+<script src="@Url.Content("~/Scripts/uploadify/jquery.uploadify.js")" type="text/javascript"></script>
+<script type="text/javascript" >
+    function boxget() {
+        var b="";
+        for (var i = 1; i > 0; i++) {
+            var al = document.getElementById("templateId" + i);
+            
+            if (al == null) {
+                i = -1;
+            }
+            else {
+                if (al.checked) {
+                    b += al.value + ",";
+                    
+                }
+            }
+
+        }
+        return b;
+    }
+
+ 
+
+
+    $(function () {
+        
+        $("#boxty").click(function () {
+            var param = boxget();
+            $.ajax({
+                type: "get",
+                url: "/Ware/EditWarelabel",
+                data:"param="+ param,
+                success: function (obj) {
+                    alert("修改成功");
+                  
+            }
+
+            })
+        })
+    })
+</script>
+    }

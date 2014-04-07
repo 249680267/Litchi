@@ -1,0 +1,91 @@
+﻿@model LitchiServer.Models.vOrOrder
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>vOrOrder</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.pkOROrder_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.pkOROrder_ID)
+            @Html.ValidationMessageFor(model => model.pkOROrder_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fkSEShopID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.fkSEShopID)
+            @Html.ValidationMessageFor(model => model.fkSEShopID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nvrShopName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrShopName)
+            @Html.ValidationMessageFor(model => model.nvrShopName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.dtmOrderTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.dtmOrderTime)
+            @Html.ValidationMessageFor(model => model.dtmOrderTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fkOROrderStatuID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.fkOROrderStatuID)
+            @Html.ValidationMessageFor(model => model.fkOROrderStatuID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nvrStatusName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrStatusName)
+            @Html.ValidationMessageFor(model => model.nvrStatusName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.mnyOrderTotal)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.mnyOrderTotal)
+            @Html.ValidationMessageFor(model => model.mnyOrderTotal)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.vrWinXinID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.vrWinXinID)
+            @Html.ValidationMessageFor(model => model.vrWinXinID)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

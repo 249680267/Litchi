@@ -1,0 +1,56 @@
+﻿@model IEnumerable<LitchiServer.Models.vSellerMessage>
+
+@{
+    ViewBag.Title = "商家信息";
+}
+
+<h2>商家信息列表</h2>
+
+<p>
+    @Html.ActionLink("新建商家信息", "Create")
+</p>
+<table>
+    <tr>
+        <th style="display:none">
+            编号
+        </th>
+        <th>
+            商家名称
+        </th>
+        <th>
+            商家描述
+        </th>
+        <th>
+            创建时间
+        </th>
+        <th>
+            商家状态
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="display:none">
+            @Html.DisplayFor(modelItem => item.pk_SESeller_ID)
+        </td>
+        <td style="">
+            @Html.DisplayFor(modelItem => item.nvrSellerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dtmCreateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvrStatusName)
+        </td>
+        <td>
+            @Html.ActionLink("修改信息", "Edit", new { id=item.pk_SESeller_ID }) |
+            @Html.ActionLink("详情", "Details", new { id=item.pk_SESeller_ID }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.pk_SESeller_ID })
+        </td>
+    </tr>
+}
+</table>

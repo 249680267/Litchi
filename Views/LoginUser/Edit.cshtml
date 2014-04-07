@@ -1,0 +1,115 @@
+﻿@model LitchiServer.Models.AU_LoginUser
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>AU_LoginUser</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.pk_AULoginUser_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.pk_AULoginUser_ID)
+            @Html.ValidationMessageFor(model => model.pk_AULoginUser_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nvrLoginAccount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrLoginAccount)
+            @Html.ValidationMessageFor(model => model.nvrLoginAccount)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.vrPassword)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.vrPassword)
+            @Html.ValidationMessageFor(model => model.vrPassword)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nvrUserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nvrUserName)
+            @Html.ValidationMessageFor(model => model.nvrUserName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.vrPhoneNum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.vrPhoneNum)
+            @Html.ValidationMessageFor(model => model.vrPhoneNum)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.vrEMail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.vrEMail)
+            @Html.ValidationMessageFor(model => model.vrEMail)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.vrContactUs)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.vrContactUs)
+            @Html.ValidationMessageFor(model => model.vrContactUs)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.dtmCreatTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.dtmCreatTime)
+            @Html.ValidationMessageFor(model => model.dtmCreatTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.dtmLastLoginTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.dtmLastLoginTime)
+            @Html.ValidationMessageFor(model => model.dtmLastLoginTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.intSum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.intSum)
+            @Html.ValidationMessageFor(model => model.intSum)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.bitDelete)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.bitDelete)
+            @Html.ValidationMessageFor(model => model.bitDelete)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
