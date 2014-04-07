@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.css">-->
+    <script src="../../Scripts/JQueryMobile/jquery-1.8.3.min.js"></script>
+    <script src="../../Scripts/JQueryMobile/jquery.mobile-1.3.2.js"></script>
+    <script type="text/javascript">$.mobile.defaultPageTransition = "none";</script>
+    <link rel="stylesheet" href="../../css/JQueryMobile/jquery.mobile-1.3.2.css">
+    <link rel="stylesheet" href="../../css/JQueryMobile/order.css">
+    <!--<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>-->
+    <script src="../Scripts/Mobile.js" ></script>
+</head>
+<body>
+
+    <section data-role="page" id="shop">
+        <!--左侧的Panel-->
+        <div data-role="panel" id="defaultPanel" data-position="left" data-display="reveal" data-theme="a" class="ui-bar-a">
+            <ul data-role="listview">
+                <li data-icon="false">
+                    <a onclick="GetCustomer" href="#AboutMe"><img src="../images/sf.png"></a>
+                    <h2>独照漫沙</h2>
+                    <p>积分 0 魅力值 0</p>
+                </li>
+            </ul>
+            <div class="heigth:50px"></div>
+            <ul data-role="listview" class="ui-btn-up-b">
+                <li data-icon="false"><a href="#" data-rel="close" onclick="shopList()"><img src="../images/sf.png" alt="我要订餐" class="ui-li-icon ui-corner-none">我要订餐</a></li>
+        	    <li data-icon="false"><a href="#AboutMe" onclick="GetCustomer()" id="panelShop" ><img src="../Images/sf.png" alt="个人资料" class="ui-li-icon ui-corner-none">个人资料</a></li>
+        	    <li data-icon="false"><a href="#ordering" ><img src="../images/sf.png" alt="我的订单" class="ui-li-icon ui-corner-none">我的订单</a></li>
+        	    <li data-icon="false"><a href="#" data-rel="close" onClick="MyCollection()"><img src="../images/sf.png" alt="我的收藏" class="ui-li-icon ui-corner-none"  >我的收藏</a></li>
+            </ul>
+        </div>
+        <!--头部-->
+        <div data-role="header" data-position="fixed" data-fullscreen="false">
+            <a href="#defaultPanel" data-role="button" data-icon="gear">菜单</a>
+            <h1>欢迎进入V外卖</h1>
+            <div class="ui-btn-right" id="DivShopType" data-role:"fieldcontain" >
+            <select  id="SelShopType" name="shopType"   data-inline="true">
+            </select>
+            </div>
+        </div>
+        <!--内容部分-->
+        <div data-role="content">
+            <div id="divShopList">
+                <ul data-role="listview" data-inset="true" id="shopList" data-filter="true" data-filter-placeholder="搜索店铺">
+                </ul>
+            </div>
+        </div>
+        <!--页脚部分-->
+    </section>
+    <!--个人资料页面-->
+    <section data-role="page" id="AboutMe">
+        <div data-role="header" data-position="fixed" data-fullscreen="false">
+		<h1 id="">个人资料</h1>
+        <a href="#shop" data-role="button" onclick="EditCustomer()" data-icon="back">返回</a>
+	</div>
+	<div data-role="content" id="shopMessageContent">
+        
+        <div style="text-align:center;">
+        	<img id="CustomerImg"src="#" style="max-width:320px" />
+        </div>
+        <div data-role="fieldcontain">
+            <label for="CustomerName">姓名:</label>
+            <input type="text" name="CustomerName" id="CustomerName">
+            <label for="CustomerPhone">电话:</label>
+            <input type="text" name="CustomerPhone" id="CustomerPhone">
+            <label for="CustomerAddress">地址:</label>
+            <input type="text" name="CustomerAddress" id="CustomerAddress">
+        </div>
+	</div>
+	
+	<div data-role="footer" data-position="fixed">
+		<h1 id="customerFooter">XXX的个人资料xxx/h1>
+	</div>
+    </section>
+    <!--商品页面-->
+    <section data-role="page" id="ware">
+        <div data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a href="#" data-rel="back" data-role="button">返回</a>
+            <h1>菜品列表</h1>
+            <div class="ui-btn-right" id="ty" data-role:"fieldcontain" >
+            <select  id="waretype" name="waretype"   data-inline="true" >
+                
+            </select>
+            </div>
+            <div data-role="navbar" id="flip">
+                <ul>
+                   <li><a href="#" id="btnWare"  class="ui-btn-active"  >菜单</a></li>
+                    <li><a href="#" onclick="GetShopWord()" id="btnShop">餐厅介绍</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div data-role="content" >
+            <div id="wareList">
+                <ul data-role="listview" id="goodlist" data-filter="true"  data-filter-placeholder="搜索菜品">
+                </ul>
+            </div>
+            <div id="shopMsg">
+                <div style="text-align:center;">
+        	    <img id="ShopImg"src="#" style="max-width:320px" />
+                    <div id="shoucang" onclick="collection()">收藏</div>
+                </div>
+                <!--公告-->
+                <div data-role="fieldcontain">
+                 <fieldset data-role="collapsible">
+        	        <legend>公告</legend>
+                     <textarea id="shopNotice" disabled="disabled"></textarea>
+                  </fieldset>
+                </div>
+                <!--店铺信息-->
+                <div data-role="collapsible" data-collapsed="false" data-theme="e">
+                    <h3>店铺信息</h3>
+                    <p id="shopName">店铺名称：</p>
+                    <p id="shopStatu">店铺状态： </p>
+                    <p id="shopClassify">店铺分类： </p>
+                    <p id="shopOpenTime">营业时间： </p>
+                    <p id="shopAddress">店铺地址： </p>
+                    <p id="shopPhone">电 话： </p>
+                    <p id="FloorPrice">起送价格： </p>
+                    <p id="shopScope">服务半径： </p>
+                    <p id="shopArea">配送区域： </p>
+                 </div>
+                <!--留言信息-->
+                <div data-role="collapsible" data-collapsed="false">
+                    <h3>留言</h3>
+                    <ul data-role="listview" id="shopWord">
+                        <li>说说话，唠唠嗑</li>
+                    </ul>
+                 </div>
+            </div>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <h3 style="text-align: left" data-inline="true">共<label id="number" data-inline="true">0</label>
+                份   总价：￥<label id="total" data-inline="true">0</label></h3>
+            <a href="#order" data-role="button" class="ui-btn-right" id="placeder" >下单</a>
+        </div>
+    </section>
+    <!--下单页面-->
+    <section data-role="page" id="order">
+        <div data-role="header" data-position="fixed">
+            <a href="#" data-rel="back" data-role="button">返回</a>
+            <h1>订单列表</h1>
+        </div>
+
+        <div data-role="content">
+            <ul data-role="listview" id="orderlist">
+
+            </ul>
+             <div data-role="fieldcontain">
+             <label for="remark">添加备注：</label>
+             <input type="text" name="remark" id="remark" placeholder="" />
+              </div>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <h5 style="text-align: right" data-inline="true"><label id="nu" data-inline="true" >0</label>份点餐￥<label id="to" data-inline="true">0</label></h5>
+            <p style="display:none" id="Aconfirm" ><a href="#address"  data-role="button">确认订单</a></p>
+            <p style="display:none" id="Aconfir"><a href="#secadress"   data-role="button">确认订单</a></p>
+        </div>
+    </section>
+    <!--送货地址-->
+    <section data-role="page" id="address">
+        <div data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a href="#" data-rel="back" data-role="button">返回</a>
+            <h1>送货信息</h1>
+        </div>
+        <div data-role="content">
+            <div data-role="fieldcontain">
+                <label for="addr">地址：</label>
+                <input type="text" name="addr" id="addr" />
+
+                <label for="phone">电话：</label>
+                <input type="text" name="phone" id="phone" />
+
+                <label for="name">姓名：</label>
+                <input type="text" name="name" id="name" placeholder="" />
+
+
+               
+            </div>
+            <a href="#" id="submit" data-inline="true"  data-role="button">提交</a>
+            <div data-role="popup" id="uedcool" data-overlay-theme="a" data-theme="c" style="max-width: 400px;" data-transition="flow" class="ui-corner-all">
+                <div data-role="header" data-theme="a" class="ui-corner-top">
+                   <h1>信息确认</h1>
+                </div>
+                <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+                    <h3 class="ui-title">下单成功!</h3>
+                    
+                    <a href="#ordering" id="jx"  data-role="button" data-inline="true" data-position-to="window"  " data-theme="b">我的订单</a> <a href="#shop" data-role="button" data-inline="true" data-position-to="window"  data-theme="c">继续点餐</a>
+                </div>
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <h3 style="text-align: right"></h3>
+        </div>
+    </section>
+    <!--我的订单-->
+    <section data-role="page" id="ordering">
+        <div data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a href="#shop"  data-role="button">返回</a>
+            <h1>订单列表</h1>
+        </div>
+        <div data-role="content">           
+            <ul data-role="listview" id="Norderinglist" >
+            </ul>
+            <p> </p>
+            <ul data-role="listview" id="orderinglist">
+            </ul>
+        </div>
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <h4></h4>
+        </div>
+    </section>
+     <!--我的订单详情-->
+    <section data-role="page" id="orderDetail">
+        <div data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a href="#"  data-rel="back" data-role="button">返回</a>
+            <h1>订单详情</h1>
+        </div>
+        <div data-role="content">          
+            <ul data-role="listview" id="receiptgood" >
+            </ul>
+            <h5 style="text-align: right">总价： ￥<label id="ordertotal">0</label></h5>
+            <div data-role="fieldcontain">
+             <label for="remark">备注：</label>
+             <input type="text" name="remark"  readonly="true" id="remarktext" placeholder="" />
+             </div>
+           <p style="display:none" id="resetor"><a href="#ordering" id="resetorder"  data-role="button">取消订单</a></p>
+           <p style="display:none" id="receiptor"><a href="#evaluation" id="receipt"  data-role="button">确认收货</a></p>
+            <p style="display:none" id="delor"><a href="#ordering" id="delorder"  data-role="button">删除订单</a></p>
+        </div>
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <h4></h4>
+        </div>
+    </section>
+    <!--评价 -->
+    <section data-role="page" id="evaluation">
+        <div data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a href="#"  data-rel="back" data-role="button">返回</a>
+            <h1>评价商铺</h1>
+        </div>
+        <div data-role="content">
+            <h2 style="text-align:center">交易成功</h2>
+             <p>
+                 <textarea name="addinfo" id="info" placeholder="评价一下吧 "></textarea>
+             </p>          
+           <p><a href="#shop" id="evaltion"  data-role="button">确定</a></p>          
+        </div>
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <h4></h4>
+        </div>
+    </section>
+    <!--地址选择 -->
+     <section data-role="page" id="secadress">
+        <div data-role="header" data-position="fixed" data-tap-toggle="false">
+            <a href="#"  data-rel="back" onclick="setaddress()" data-role="button">返回</a>
+            <h1>送货地址</h1>
+        </div>
+        <div data-role="content">
+           <ul data-role="listview" data-split-theme="d"  data-divider-theme="e" data-count-theme="b" id="addre">
+            </ul>      
+            <div data-role="popup" id="addpup" data-overlay-theme="a" data-theme="c" style="max-width: 400px;" data-transition="flow"  class="ui-corner-all">
+                <div data-role="header" data-theme="a" class="ui-corner-top">
+                   <h1>信息确认</h1>
+                </div>
+                <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+                    <h3 class="ui-title">下单成功!</h3>
+                    
+                    <a href="#ordering"  id="A1"  data-role="button" data-inline="true"   data-position-to="window"  " data-theme="b">我的订单</a> <a href="#shop" data-role="button" data-inline="true" data-position-to="window"  data-theme="c">继续点餐</a>
+                </div>
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+          <p><a href="#" id="suborder"  data-role="button" data-inline="true">提交订单</a>
+              <a href="#address" id="newaddress"  data-role="button" data-inline="true">添加新地址</a>
+          </p>
+        </div>
+          <div data-role="popup" id="addpop" data-overlay-theme="a" data-theme="c" style="max-width: 400px;" data-transition="flow" class="ui-corner-all">
+                <div data-role="header" data-theme="a" class="ui-corner-top">
+                   <h1>删除确认</h1>
+                </div>
+                <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+                    <h3 class="ui-title">是否删除？</h3>                   
+                    <a href="#"   data-role="button" data-inline="true" data-position-to="window" onclick="deladdress()" data-theme="b">是</a> <a href="#" data-role="button" data-inline="true" data-position-to="window"  onclick="hidenpop()"  data-theme="c">否</a>
+                </div>
+            </div>
+    </section>
+
+</body>
+</html>

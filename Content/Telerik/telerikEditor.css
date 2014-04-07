@@ -1,0 +1,9 @@
+﻿/* using this <p> styling to prevent spacing from appearing
+	 when user presses Enter key in the Telerik editor to move
+	 text to the next line; they can press Enter twice to create spacing
+  */
+p 
+{
+	margin-bottom: 0px;
+	margin-top: 0px;
+}

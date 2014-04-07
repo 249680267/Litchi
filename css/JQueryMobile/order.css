@@ -1,0 +1,16 @@
+﻿
+    .jz
+{
+        position:absolute;font-size:15px;font-weight:700;padding:.1em .3em;top:50%;margin-top:-.9em;right:70px;
+
+}
+.jo {
+    position:absolute;font-size:15px;font-weight:700;padding:.1em .3em;top:50%;margin-top:-.9em;right:30px;
+}
+.so {
+
+position:absolute;font-size:15px;font-weight:700;padding:.1em .3em;top:50%;margin-top:-.9em;right:50px;
+}
+.list-selected {
+        background-color:red;
+}
